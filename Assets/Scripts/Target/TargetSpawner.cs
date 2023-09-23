@@ -42,7 +42,7 @@ public class TargetSpawner : MonoBehaviour
             if(!_targetsList[index_X][index_Y])
             {
                 _targetsList[index_X][index_Y] = true;
-                GameObject target = Instantiate(_target);
+                GameObject target = Instantiate(_target,transform);
                 TargetHitHandler targetHitHandler = target.GetComponent<TargetHitHandler>();
                 targetHitHandler.SetSpawnerAndIndex(this,index_X,index_Y);
                 SetTargetPosition(target.transform,index_X,index_Y);
@@ -53,7 +53,7 @@ public class TargetSpawner : MonoBehaviour
 
     private void SetTargetPosition(Transform targetTrans,int index_X,int index_Y)
     {
-        targetTrans.position = new Vector3(
+        targetTrans.localPosition = new Vector3(
             (index_X - _size_X / 2) * 0.1f,
             (index_Y - _size_Y / 2) * 0.1f + 1.6f,
             3f

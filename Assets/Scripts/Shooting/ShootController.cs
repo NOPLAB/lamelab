@@ -34,7 +34,7 @@ public class ShootController : MonoBehaviour
                 _bulletTrail.ShootTrailedBullet(_muzzleTrans.position,scanResult.hitPosition);
             }else
             {
-                _bulletTrail.ShootTrailedBullet(_muzzleTrans.position,Camera.main.transform.forward * 100);
+                _bulletTrail.ShootTrailedBullet(_muzzleTrans.position,_cameraTrans.position + _cameraTrans.forward * 100);
             }   
         }
     }
