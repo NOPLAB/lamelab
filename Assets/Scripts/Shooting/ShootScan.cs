@@ -13,7 +13,11 @@ public class ShootScan : MonoBehaviour
         {
             if(hits[i].collider.CompareTag("Target"))
             {
-                print("hit");
+                if(hits[i].collider.TryGetComponent<TargetHitHandler>(out var targetHitHandler))
+                {
+                    targetHitHandler.HitTarget();
+                }
+                
                 return (hits[i].point,hits[i].collider.gameObject);
             }
         }
