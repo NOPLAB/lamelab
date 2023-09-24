@@ -15,6 +15,7 @@ public class TargetSpawner : MonoBehaviour
     private int _allTargetCount = 15;
     private int _AlliveTargetCount;
 
+    [SerializeField] private SoundEffector _soundEffector;
     // イベントから
     public void Spawn15Target()
     {
@@ -63,7 +64,9 @@ public class TargetSpawner : MonoBehaviour
                 ScoreTarget scoreTarget = target.GetComponent<ScoreTarget>();
                 scoreTarget.SetSpawnerAndIndex(this,index_X,index_Y);
                 SetTargetPosition(target.transform,index_X,index_Y);
+
                 _AlliveTargetCount--;
+                target.GetComponent<TargetHitHandler>()._event.AddListener(_soundEffector.Play);
                 break;
             }
         }
