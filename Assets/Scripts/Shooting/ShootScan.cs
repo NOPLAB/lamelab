@@ -15,7 +15,7 @@ public class ShootScan : MonoBehaviour
             {
                 if(hits[i].collider.TryGetComponent<TargetHitHandler>(out var targetHitHandler))
                 {
-                    targetHitHandler.HitTarget();
+                    targetHitHandler.OnHit();
                 }
                 
                 return (hits[i].point,hits[i].collider.gameObject);

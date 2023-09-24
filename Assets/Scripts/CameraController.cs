@@ -56,4 +56,10 @@ public class CameraController : MonoBehaviour
         // 反映
         _rotateY.localEulerAngles = _yRotator;
     }
+
+    public void SetMouseSpeed(float mouseX,float mosueY)
+    {
+        MouseXSpeed = mouseX;
+        MouseYSpeed = mosueY;
+    }
 }
