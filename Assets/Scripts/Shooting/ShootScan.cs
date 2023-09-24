@@ -21,6 +21,12 @@ public class ShootScan : MonoBehaviour
                 return (hits[i].point,hits[i].collider.gameObject);
             }
         }
-        return (Vector3.zero,null);
+        if(hitCount > 0)
+        {
+            return (hits[0].point,hits[0].collider.gameObject);
+        }else
+        {
+            return (Vector3.zero,null);
+        }
     }
 }
