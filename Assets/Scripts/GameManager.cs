@@ -13,10 +13,12 @@ public class GameManager: MonoBehaviour
     private int _hitCount;
 
     [SerializeField] private int _boardNo = 1;
-    [SerializeField] private float _missTime = 10;
+    [SerializeField] private float _missTime = 1;
+    [SerializeField] ResultViewer _resultViewer;
     
     public void OnClickStart()
     {
+        _resultViewer.DisActiveText();
         _timer = 0;
         _hitCount = 0;
         _soundEffector.ResetSelector();
@@ -54,6 +56,7 @@ public class GameManager: MonoBehaviour
 
     private void EndGame()
     {
+        _resultViewer.ActiveText(_timer.ToString("f3"));
         _isPlayingGame = false;
     }
 
