@@ -12,6 +12,8 @@ public class ShootController : MonoBehaviour
     private ShootScan _shootScan;
     private Transform _cameraTrans;
 
+    [SerializeField] private GameManager _gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class ShootController : MonoBehaviour
             }else
             {
                 _bulletTrail.ShootTrailedBullet(_muzzleTrans.position,_cameraTrans.position + _cameraTrans.forward * 100);
+                _gameManager.MissTarget();
             }
         }
     }
