@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -25,7 +26,10 @@ public class UIManager : MonoBehaviour
         _volumeSlider.onValueChanged.AddListener(OnValueChangedVolumeSlider);
 }
 
-    private void OnClickStartButton(){}
+    private void OnClickStartButton()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
     
     private void OnClickRankingButton(){}
 
