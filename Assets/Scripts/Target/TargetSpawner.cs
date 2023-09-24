@@ -43,8 +43,8 @@ public class TargetSpawner : MonoBehaviour
             {
                 _targetsList[index_X][index_Y] = true;
                 GameObject target = Instantiate(_target,transform);
-                TargetHitHandler targetHitHandler = target.GetComponent<TargetHitHandler>();
-                targetHitHandler.SetSpawnerAndIndex(this,index_X,index_Y);
+                ScoreTarget scoreTarget = target.GetComponent<ScoreTarget>();
+                scoreTarget.SetSpawnerAndIndex(this,index_X,index_Y);
                 SetTargetPosition(target.transform,index_X,index_Y);
                 break;
             }
