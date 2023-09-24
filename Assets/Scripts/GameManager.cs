@@ -17,11 +17,7 @@ public class GameManager: MonoBehaviour
     
     public void OnClickStart()
     {
-        if (_isPlayingGame)
-        {
-            return;
-        }
-
+        _timer = 0;
         _hitCount = 0;
         _soundEffector.ResetSelector();
         _targetSpawner.Spawn15Target();
@@ -47,13 +43,13 @@ public class GameManager: MonoBehaviour
         
         _soundEffector.Play();
         
-        if (_hitCount == 14)
+        _hitCount++;
+
+        if (_hitCount == 15)
         {
             EndGame();
             SendScoreToServer();
         }
-        
-        _hitCount++;
     }
 
     private void EndGame()

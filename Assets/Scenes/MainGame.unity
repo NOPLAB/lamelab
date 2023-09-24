@@ -1697,7 +1697,7 @@ MonoBehaviour:
   _soundEffector: {fileID: 1126878278}
   _timer: 0
   _boardNo: 1
-  _missTime: 10
+  _missTime: 1
 --- !u!4 &1663144241
 Transform:
   m_ObjectHideFlags: 0
