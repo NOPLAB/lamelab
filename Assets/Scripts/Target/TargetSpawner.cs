@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour
@@ -11,9 +12,20 @@ public class TargetSpawner : MonoBehaviour
 
     [SerializeField] private GameObject _target;
     private int targetCount = 3;
+    private int _allTargetCount = 15;
+    private int _AlliveTargetCount;
 
-    void Start()
+    // イベントから
+    public void Spawn15Target()
     {
+        _AlliveTargetCount = _allTargetCount;
+
+        // トランスフォームの子を「なぜか」全取得できる
+        foreach(Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        
         _targetsList = new List<List<bool>>(_size_X);
 
         for(int i = 0;i < _size_X;i++)
@@ -34,6 +46,11 @@ public class TargetSpawner : MonoBehaviour
 
     private void SpawnTarget()
     {
+        if(_AlliveTargetCount <= 0)
+        {
+            return;
+        }
+
         for(int i = 0;i < _size_X*_size_Y;i++)
         {
             int index_X = Random.Range(0,_size_X);
@@ -46,6 +63,7 @@ public class TargetSpawner : MonoBehaviour
                 ScoreTarget scoreTarget = target.GetComponent<ScoreTarget>();
                 scoreTarget.SetSpawnerAndIndex(this,index_X,index_Y);
                 SetTargetPosition(target.transform,index_X,index_Y);
+                _AlliveTargetCount--;
                 break;
             }
         }
