@@ -12,6 +12,8 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private GameObject _target;
     private int targetCount = 3;
 
+    [SerializeField] private SoundEffector _soundEffector;
+
     void Start()
     {
         _targetsList = new List<List<bool>>(_size_X);
@@ -46,6 +48,7 @@ public class TargetSpawner : MonoBehaviour
                 ScoreTarget scoreTarget = target.GetComponent<ScoreTarget>();
                 scoreTarget.SetSpawnerAndIndex(this,index_X,index_Y);
                 SetTargetPosition(target.transform,index_X,index_Y);
+                target.GetComponent<TargetHitHandler>()._event.AddListener(_soundEffector.Play);
                 break;
             }
         }

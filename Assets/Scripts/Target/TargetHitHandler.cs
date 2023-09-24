@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class TargetHitHandler : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _event;
+    public UnityEvent _event;
 
     // 弾が当たるとShootScanから呼ばれる
     public void OnHit()
